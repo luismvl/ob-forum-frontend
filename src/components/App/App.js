@@ -1,10 +1,10 @@
-import Test from "../Test";
+import Navbar from "../Navbar";
 
 function App() {
   return (
     <div>
+      <Navbar />
       <h1>Test</h1>
-      <Test></Test>
     </div>
   );
 }
