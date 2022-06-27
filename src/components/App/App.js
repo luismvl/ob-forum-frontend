@@ -1,4 +1,5 @@
-import Navbar from "../Navbar";
+import React from 'react'
+import Navbar from '../Navbar'
 
 function App() {
   return (
@@ -6,7 +7,7 @@ function App() {
       <Navbar />
       <h1>Test</h1>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
