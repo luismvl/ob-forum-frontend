@@ -3,6 +3,15 @@ import styled from 'styled-components/macro'
 
 import { BiSearch } from 'react-icons/bi'
 
+function Input() {
+  return (
+    <Container>
+      <Icon />
+      <input type="text" placeholder="Buscar" />
+    </Container>
+  )
+}
+
 const Container = styled.div`
   display: flex;
   gap: 12px;
@@ -11,15 +20,16 @@ const Container = styled.div`
   max-width: 161px;
   padding: 0 16px;
   border-radius: 48px;
-  background-color: #f0f0f3;
-  border: 1px solid #e6e6ea;
+  background-color: ${({ theme }) => theme.colors.grey2};
+  border: 1px solid ${({ theme }) => theme.colors.grey3};
 
   & input {
     width: 100%;
     border: none;
-    background-color: #f0f0f3;
-    color: #797a7d;
+    background-color: ${({ theme }) => theme.colors.grey2};
+    color: ${({ theme }) => theme.colors.grey5};
     font-size: 16px;
+    padding: 0;
   }
 
   & input:focus-visible {
@@ -27,18 +37,16 @@ const Container = styled.div`
   }
 
   & input::placeholder {
-    color: #a5a8b3;
-    font-size: 16px;
+    color: ${({ theme }) => theme.colors.grey4};
+    font-weight: 700;
   }
 `
 
-function Input() {
-  return (
-    <Container>
-      <BiSearch color="#A5A8B3" size={20} style={{ flexShrink: 0 }} />
-      <input type="text" placeholder="Buscar" />
-    </Container>
-  )
-}
+const Icon = styled(BiSearch)`
+  color: ${({ theme }) => theme.colors.grey4};
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+`
 
 export default Input
