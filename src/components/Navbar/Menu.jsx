@@ -16,7 +16,7 @@ function Menu({ username }) {
   return (
     <Wrapper onClick={toggleMenu}>
       <Avatar />
-      {username}
+      <span>{username}</span>
       <Icon $isOpen={isOpen} />
       <MenuList $isOpen={isOpen}>
         {/* TODO: Crear un componente MenuItem */}
@@ -40,9 +40,13 @@ const Wrapper = styled.div`
   border-radius: 91px;
   padding-right: 10px;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.black};
-  font-size: 14px;
-  font-weight: 600;
+
+  & span {
+    color: ${({ theme }) => theme.colors.black};
+    font-size: 14px;
+    font-weight: 600;
+    user-select: none;
+  }
 `
 const Icon = styled(BiChevronDown)`
   display: flex;
