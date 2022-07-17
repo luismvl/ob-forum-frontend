@@ -13,8 +13,8 @@ function Navbar() {
         OpenBootcamp
       </Left>
       <Right>
-        <Input /> {/* Input de buscar */}
-        <Menu username="luismvl" /> {/* Menú de usuario */}
+        <Input />
+        <Menu username="luismvl" />
       </Right>
     </Container>
   )
