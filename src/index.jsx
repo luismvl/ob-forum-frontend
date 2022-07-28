@@ -1,12 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import GlobalStyles from './styles/GlobalStyles'
+import { AuthProvider } from './hooks/use-auth'
+
 import App from './components/App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <GlobalStyles />
-    <App />
+    <AuthProvider>
+      <BrowserRouter>
+        <GlobalStyles />
+        <App />
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>
 )

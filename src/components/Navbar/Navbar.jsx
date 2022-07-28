@@ -22,6 +22,9 @@ function Navbar() {
 
 const Container = styled.div`
   display: flex;
+  /* position: fixed;
+  top: 0; */
+  width: 100vw;
   align-items: center;
   gap: 40px;
   height: 70px;

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 export const light = {
   name: 'light',
   colors: {
