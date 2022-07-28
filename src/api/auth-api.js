@@ -11,8 +11,12 @@ export async function loginByUsernameOrEmail({ username, email, password }) {
 }
 
 export async function checkToken({ token }) {
-  const res = await axios.post(`${url}/auth/check-token`, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
+  const res = await axios.post(
+    `${url}/auth/check-token`,
+    {},
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  )
   return res.data
 }

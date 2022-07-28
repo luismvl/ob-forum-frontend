@@ -6,36 +6,37 @@ import { loginByUsernameOrEmail, checkToken } from '../api/auth-api'
 const authContext = createContext()
 
 export function AuthProvider({ children }) {
-  // Contains the user's token and the user's data
+  // Contains the user token and the user data
   // { token, user }
   const [auth, setAuth] = useState(null)
 
-  // Checks if token is valid
+  // Checks token is in localStorage and if is valid
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
-      checkToken(token)
+      checkToken({ token })
         .then((user) => {
-          setAuth({ user, token })
           localStorage.setItem('user', JSON.stringify(user))
+          setAuth({ user, token })
         })
         .catch(() => {
-          setAuth(null)
           localStorage.removeItem('user')
           localStorage.removeItem('token')
+          setAuth(null)
         })
     }
   }, [])
 
   const login = async ({ username, email, password, rememberMe }) => {
-    const { token, user } = loginByUsernameOrEmail({ username, email, password })
+    const { token, user } = await loginByUsernameOrEmail({ username, email, password })
 
-    setAuth({ user, token })
     if (rememberMe) {
       localStorage.setItem('token', token)
       localStorage.setItem('user', JSON.stringify(user))
     }
+    setAuth({ user, token })
   }
+
   const ctxValue = useMemo(() => ({ auth, login }), [auth, login])
 
   return <authContext.Provider value={ctxValue}>{children}</authContext.Provider>

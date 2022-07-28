@@ -8,6 +8,7 @@ import { useAuth } from '../../hooks/use-auth'
 import Navbar from '../Navbar'
 // import Sidenav from '../Sidenav'
 import Login from '../Login'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 function App() {
   const [selectedTheme, setSelectedTheme] = useState(light)
@@ -22,9 +23,19 @@ function App() {
 
   return (
     <ThemeProvider theme={{ ...selectedTheme, ...base }}>
-      {!auth && <Navbar />}
+      {auth && <Navbar />}
       <Routes>
+        <Route path="/" element={<h2>Home</h2>} />
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/test"
+          element={
+            <ProtectedRoute>
+              <h2>ProtectedRoute</h2>
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<h2>404 Not Found</h2>} />
       </Routes>
       {/* <Sidenav />
       <button type="button" onClick={toggleTheme}>
