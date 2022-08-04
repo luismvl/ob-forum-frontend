@@ -8,10 +8,11 @@ function MenuList({ $isOpen, children }) {
 
 // TODO: Agregar animación de entrada y salida de la lista
 const Wrapper = styled.ul`
-  border: 1px solid ${({ theme }) => theme.colors.grey3};
+  width: max-content;
   display: ${({ $isOpen }) => ($isOpen ? 'flex' : 'none')};
   flex-direction: column;
   gap: 10px;
+  border: 1px solid ${({ theme }) => theme.colors.grey3};
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
@@ -19,18 +20,7 @@ const Wrapper = styled.ul`
   background-color: #fff;
   border-radius: 14px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  & > li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.grey3};
-    }
-  }
+  z-index: 5;
 `
 
 MenuList.propTypes = {

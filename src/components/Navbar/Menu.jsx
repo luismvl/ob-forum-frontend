@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-
-import { BiChevronDown } from 'react-icons/bi'
+import { BiChevronDown, BiLogOut } from 'react-icons/bi'
+import { useAuth } from '../../hooks/use-auth'
 import Avatar from './Avatar'
 import MenuList from './MenuList'
+import MenuItem from './MenuItem'
 
 function Menu({ username }) {
   const [isOpen, setIsOpen] = useState(false)
+
+  const { logout } = useAuth()
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -19,10 +22,7 @@ function Menu({ username }) {
       <span>{username}</span>
       <Icon $isOpen={isOpen} />
       <MenuList $isOpen={isOpen}>
-        {/* TODO: Crear un componente MenuItem */}
-        <li>Cerrar sesión</li>
-        <li>Cerrar sesión</li>
-        <li>Cerrar sesión</li>
+        <MenuItem label="Cerrar sesión" onClick={logout} icon={<BiLogOut />} />
       </MenuList>
     </Wrapper>
   )
