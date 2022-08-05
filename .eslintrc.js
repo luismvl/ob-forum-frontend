@@ -17,5 +17,7 @@ module.exports = {
     'prettier/prettier': 'error',
     'import/export': 'off',
     'no-restricted-exports': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'react/button-has-type': 'off',
   },
 }

@@ -25,7 +25,14 @@ function App() {
     <ThemeProvider theme={{ ...selectedTheme, ...base }}>
       {auth && <Navbar />}
       <Routes>
-        <Route path="/" element={<h2>Home</h2>} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <h2>Home Protected</h2>
+            </ProtectedRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route
           path="/test"

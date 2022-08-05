@@ -1,27 +1,27 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
 
-import { BiSearch } from 'react-icons/bi'
-
-function Input() {
+function Input({ placeholder, leftIcon, rightIcon, type, onChange, value, id }) {
   return (
-    <Container>
-      <Icon />
-      <input type="text" placeholder="Buscar" />
-    </Container>
+    <Wrapper>
+      {leftIcon}
+      <input type={type} placeholder={placeholder} onChange={onChange} value={value} id={id} />
+      {rightIcon}
+    </Wrapper>
   )
 }
 
-const Container = styled.div`
+const Wrapper = styled.div`
   display: flex;
   gap: 12px;
   align-items: center;
   height: 42px;
-  max-width: 161px;
+  width: 100%;
   padding: 0 16px;
-  border-radius: 48px;
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.grey2};
-  border: 1px solid ${({ theme }) => theme.colors.grey3};
+  /* border: 1px solid ${({ theme }) => theme.colors.grey3}; */
 
   & input {
     width: 100%;
@@ -38,15 +38,34 @@ const Container = styled.div`
 
   & input::placeholder {
     color: ${({ theme }) => theme.colors.grey4};
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+  }
+  & svg {
+    color: ${({ theme }) => theme.colors.grey4};
+    flex-shrink: 0;
   }
 `
 
-const Icon = styled(BiSearch)`
-  color: ${({ theme }) => theme.colors.grey4};
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-`
+Input.propTypes = {
+  placeholder: PropTypes.string,
+  leftIcon: PropTypes.element,
+  rightIcon: PropTypes.element,
+  type: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
+  id: PropTypes.string,
+}
+
+Input.defaultProps = {
+  placeholder: '',
+  leftIcon: null,
+  rightIcon: null,
+  type: 'text',
+  onChange: () => {},
+  value: '',
+  id: '',
+}
 
 export default Input

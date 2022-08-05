@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import { BiSearch } from 'react-icons/bi'
 import logo from '../../assets/ob-logo.svg'
-
 import Input from '../Input'
 import Menu from './Menu'
 
@@ -13,7 +13,7 @@ function Navbar() {
         OpenBootcamp
       </Left>
       <Right>
-        <Input />
+        <Input placeholder="Buscar" leftIcon={<BiSearch size={24} />} />
         <Menu username="luismvl" />
       </Right>
     </Container>
