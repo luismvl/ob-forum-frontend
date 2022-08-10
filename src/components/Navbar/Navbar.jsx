@@ -1,21 +1,26 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { BiSearch } from 'react-icons/bi'
+import { useAuth } from '../../hooks/useAuth'
 import logo from '../../assets/ob-logo.svg'
 import Input from '../Input'
 import Menu from './Menu'
 
 function Navbar() {
+  const { auth } = useAuth()
+
   return (
     <Container>
       <Left>
         <img src={logo} alt="logo" />
         OpenBootcamp
       </Left>
-      <Right>
-        <Input placeholder="Buscar" leftIcon={<BiSearch size={24} />} />
-        <Menu username="luismvl" />
-      </Right>
+      {auth && (
+        <Right>
+          <Input placeholder="Buscar" leftIcon={<BiSearch size={24} />} />
+          <Menu username="luismvl" />
+        </Right>
+      )}
     </Container>
   )
 }
@@ -29,7 +34,7 @@ const Container = styled.div`
   gap: 40px;
   height: 70px;
   padding: 0 34px;
-  background-color: ${({ theme }) => theme.colors.grey1};
+  background-color: ${({ theme }) => theme.greys.grey1};
 `
 
 const Left = styled.div`
@@ -37,8 +42,8 @@ const Left = styled.div`
   align-items: center;
   flex-grow: 1;
   gap: 20px;
-  background-color: ${({ theme }) => theme.colors.grey1};
-  color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.greys.grey1};
+  color: ${({ theme }) => theme.greys.black};
   font-size: 24px;
   font-weight: 700;
 `

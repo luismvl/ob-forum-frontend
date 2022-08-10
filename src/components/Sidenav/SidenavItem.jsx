@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   font-weight: 600;
   font-size: 15px;
   letter-spacing: 0.005em;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.greys.black};
   border-radius: 8px;
   cursor: pointer;
 
@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.grey3};
+    background-color: ${({ theme }) => theme.greys.grey3};
   }
 `
 

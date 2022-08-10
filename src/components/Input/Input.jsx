@@ -20,14 +20,14 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 0 16px;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.grey2};
+  background-color: ${({ theme }) => theme.greys.grey2};
   /* border: 1px solid ${({ theme }) => theme.colors.grey3}; */
 
   & input {
     width: 100%;
     border: none;
-    background-color: ${({ theme }) => theme.colors.grey2};
-    color: ${({ theme }) => theme.colors.grey5};
+    background-color: ${({ theme }) => theme.greys.grey2};
+    color: ${({ theme }) => theme.greys.grey5};
     font-size: 16px;
     padding: 0;
   }
@@ -37,13 +37,13 @@ const Wrapper = styled.div`
   }
 
   & input::placeholder {
-    color: ${({ theme }) => theme.colors.grey4};
+    color: ${({ theme }) => theme.greys.grey4};
     font-weight: 500;
     font-size: 16px;
     font-family: 'Inter', sans-serif;
   }
   & svg {
-    color: ${({ theme }) => theme.colors.grey4};
+    color: ${({ theme }) => theme.greys.grey4};
     flex-shrink: 0;
   }
 `

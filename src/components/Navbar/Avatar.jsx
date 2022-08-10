@@ -11,9 +11,9 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.greys.black};
   border-radius: 50%;
-  color: ${({ theme }) => theme.colors.grey6};
+  color: ${({ theme }) => theme.greys.grey6};
   cursor: default;
   font-family: 'Raleway', sans-serif;
   font-weight: 700;

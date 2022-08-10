@@ -17,12 +17,13 @@ const Wrapper = styled.li`
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding: 8px;
+  padding: 10px 15px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.grey3};
+    background-color: ${({ theme }) => theme.greys.grey3};
   }
 
   & svg {

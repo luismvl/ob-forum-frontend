@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Navigate, useLocation } from 'react-router-dom'
-import { useAuth } from '../../hooks/use-auth'
+import { useAuth } from '../../hooks/useAuth'
 
 function ProtectedRoute({ children }) {
   const { auth } = useAuth()

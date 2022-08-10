@@ -12,11 +12,11 @@ const Wrapper = styled.ul`
   display: ${({ $isOpen }) => ($isOpen ? 'flex' : 'none')};
   flex-direction: column;
   gap: 10px;
-  border: 1px solid ${({ theme }) => theme.colors.grey3};
+  border: 1px solid ${({ theme }) => theme.greys.grey3};
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  padding: 10px 0;
+  padding: 10px 15px;
   background-color: #fff;
   border-radius: 14px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);

@@ -82,7 +82,7 @@ const MenuIcon = styled(BiChevronDown)`
   margin-left: -5px;
   width: 24px;
   height: 100%;
-  color: ${({ theme }) => theme.colors.grey4};
+  color: ${({ theme }) => theme.greys.grey4};
 `
 
 export default Sidenav

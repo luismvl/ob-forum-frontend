@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import GlobalStyles from './styles/GlobalStyles'
-import { AuthProvider } from './hooks/use-auth'
+import { AuthProvider } from './hooks/useAuth'
 
 import App from './components/App'
 
