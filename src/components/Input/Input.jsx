@@ -4,15 +4,15 @@ import PropTypes from 'prop-types'
 
 function Input({ placeholder, leftIcon, rightIcon, type, onChange, value, id }) {
   return (
-    <Wrapper>
+    <Container>
       {leftIcon}
       <input type={type} placeholder={placeholder} onChange={onChange} value={value} id={id} />
       {rightIcon}
-    </Wrapper>
+    </Container>
   )
 }
 
-const Wrapper = styled.div`
+export const Container = styled.div`
   display: flex;
   gap: 12px;
   align-items: center;

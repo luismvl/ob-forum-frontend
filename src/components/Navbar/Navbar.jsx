@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 import { BiSearch } from 'react-icons/bi'
 import { useAuth } from '../../hooks/useAuth'
 import logo from '../../assets/ob-logo.svg'
-import Input from '../Input'
+import Input, { Container as InputContainer } from '../Input'
 import Menu from './Menu'
 
 function Navbar() {
@@ -35,6 +35,12 @@ const Container = styled.div`
   height: 70px;
   padding: 0 34px;
   background-color: ${({ theme }) => theme.greys.grey1};
+
+  & ${InputContainer} {
+    border-radius: 48px;
+    border: 1px solid ${({ theme }) => theme.greys.grey3};
+    width: 161px;
+  }
 `
 
 const Left = styled.div`
