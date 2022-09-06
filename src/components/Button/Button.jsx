@@ -10,7 +10,7 @@ const Button = styled.button`
   width: 100%;
   border: none;
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.primary.main};
+  background-color: ${({ theme }) => theme.primary.main}; // Default color
   background-color: ${({ theme, color }) => color === 'secondary' && theme.greys.black};
   background-color: ${({ theme, color }) => color === 'white' && theme.greys.white};
   background-color: ${({ theme, color }) => color === 'grey' && theme.greys.grey3};

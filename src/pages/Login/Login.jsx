@@ -11,7 +11,7 @@ import Link from '../../components/Link'
 function Login() {
   const [identity, setIdentity] = useState('')
   const [password, setPassword] = useState('')
-  const [rememberMe, setRememberMe] = useState(true)
+  const [rememberMe, setRememberMe] = useState(false)
   const [isLogging, setIsLogging] = useState(false)
 
   const location = useLocation()

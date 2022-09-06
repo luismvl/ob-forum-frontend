@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-filename-extension */
 import React, { createContext, useState, useEffect, useContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { loginByUsernameOrEmail, checkToken } from '../api/auth-api'
@@ -45,6 +44,7 @@ export function AuthProvider({ children }) {
 
   const ctxValue = useMemo(() => ({ auth, login, logout }), [auth, login])
 
+  // eslint-disable-next-line react/jsx-filename-extension
   return <authContext.Provider value={ctxValue}>{children}</authContext.Provider>
 }
 
