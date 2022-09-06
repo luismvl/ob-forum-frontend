@@ -1,9 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, useLocation, Outlet } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 
-function ProtectedRoute({ children }) {
+function ProtectedRoute() {
   const { auth } = useAuth()
   const location = useLocation()
 
@@ -11,11 +10,7 @@ function ProtectedRoute({ children }) {
     return <Navigate to="/login" state={{ from: location }} />
   }
 
-  return children
-}
-
-ProtectedRoute.propTypes = {
-  children: PropTypes.node.isRequired,
+  return <Outlet />
 }
 
 export default ProtectedRoute

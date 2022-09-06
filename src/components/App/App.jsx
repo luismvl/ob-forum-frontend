@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
-// import styled from 'styled-components/macro'
+import { Route, Routes, Navigate, Outlet } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { dark, light } from '../../styles/themes'
 
 import Navbar from '../Navbar'
-// import Sidenav from '../Sidenav'
 import Login from '../../pages/Login'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import Home from '../../pages/Home'
 
 function App() {
   const [selectedTheme, setSelectedTheme] = useState(light)
@@ -22,29 +21,17 @@ function App() {
     <ThemeProvider theme={selectedTheme}>
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <h2>Home Protected</h2>
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/test"
-          element={
-            <ProtectedRoute>
-              <h2>ProtectedRoute</h2>
-            </ProtectedRoute>
-          }
-        />
+
+        <Route element={<ProtectedRoute />}>
+          <Route path="/home" element={<Home />} />
+        </Route>
+
+        {/* Not Found Route */}
         <Route path="*" element={<h2>404 Not Found</h2>} />
       </Routes>
-      {/* <Sidenav />
-      <button type="button" onClick={toggleTheme}>
-        Change theme
-      </button> */}
+      <Outlet />
     </ThemeProvider>
   )
 }
