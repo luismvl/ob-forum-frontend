@@ -91,7 +91,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
   width: 100%;
   height: calc(100vh - 70px);
 `
@@ -99,12 +98,21 @@ const Container = styled.div`
 const Form = styled.form`
   display: flex;
   gap: 30px;
-  min-width: 405px;
+  width: 100%;
+  max-width: 405px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 40px;
   border-radius: 8px;
+
+  @media (max-width: 420px) {
+    padding: 20px;
+  }
+
+  @media (max-width: 370px) {
+    padding: 10px;
+  }
 `
 
 const FormTitle = styled.h2`
@@ -142,6 +150,10 @@ const RememberMeForgotPassword = styled.div`
 
   & ${Link} {
     font-weight: 600;
+  }
+
+  @media (max-width: 355px) {
+    flex-direction: column;
   }
 `
 

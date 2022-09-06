@@ -24,6 +24,7 @@ function App() {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/login" element={<Login />} />
 
+        {/* Protected Routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/home" element={<Home />} />
         </Route>
