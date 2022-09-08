@@ -47,6 +47,13 @@ const Wrapper = styled.div`
     font-weight: 600;
     user-select: none;
   }
+
+  @media (max-width: 625px) {
+    gap: 10px;
+    & > span {
+      display: none;
+    }
+  }
 `
 const Icon = styled(BiChevronDown)`
   display: flex;
