@@ -92,7 +92,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: calc(100vh - 70px);
+  height: 100%;
 `
 
 const Form = styled.form`
@@ -111,7 +111,7 @@ const Form = styled.form`
   }
 
   @media (max-width: 370px) {
-    padding: 10px;
+    padding: 15px;
   }
 `
 
@@ -146,10 +146,12 @@ const RememberMeForgotPassword = styled.div`
   gap: 10px;
   width: 100%;
   justify-content: space-between;
-  font-size: 14px;
+  font-size: 15px;
 
+  // Custom styles for Link component
   & ${Link} {
     font-weight: 600;
+    font-size: 14px;
   }
 
   @media (max-width: 355px) {
