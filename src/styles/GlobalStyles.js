@@ -39,6 +39,11 @@ const GlobalStyles = createGlobalStyle`
     max-width: 100%;
     height: auto;
   }
+
+  #root {
+    width: 100%;
+    height: 100vh;
+  }
 `
 
 export default GlobalStyles
