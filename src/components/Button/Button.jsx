@@ -1,7 +1,17 @@
+import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
-const Button = styled.button`
+function Button({ type, variant, color, children, leftIcon }) {
+  return (
+    <Wrapper type={type} variant={variant} color={color}>
+      {leftIcon}
+      {children}
+    </Wrapper>
+  )
+}
+
+export const Wrapper = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,12 +53,15 @@ Button.propTypes = {
   type: PropTypes.string,
   variant: PropTypes.oneOf(['filled', 'outlined', 'shaded', 'colorShaded']),
   color: PropTypes.oneOf(['primary', 'secondary', 'white', 'grey']),
+  children: PropTypes.node.isRequired,
+  leftIcon: PropTypes.element,
 }
 
 Button.defaultProps = {
   type: 'button',
   variant: 'filled',
   color: 'primary',
+  leftIcon: null,
 }
 
 export default Button
