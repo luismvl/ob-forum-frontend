@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
-function Button({ type, variant, color, children, leftIcon }) {
+function Button({ type, variant, color, children, leftIcon, disabled }) {
   return (
-    <Wrapper type={type} variant={variant} color={color}>
+    <Wrapper type={type} variant={variant} color={color} disabled={disabled}>
       {leftIcon}
       {children}
     </Wrapper>
@@ -43,6 +43,7 @@ export const Wrapper = styled.button`
     background-color: ${({ theme, color }) => color === 'white' && theme.greys.grey2};
     background-color: ${({ theme, color }) => color === 'grey' && theme.greys.grey4};
   }
+
   &:disabled {
     background-color: ${({ theme }) => theme.greys.grey4};
     cursor: wait;
@@ -55,6 +56,7 @@ Button.propTypes = {
   color: PropTypes.oneOf(['primary', 'secondary', 'white', 'grey']),
   children: PropTypes.node.isRequired,
   leftIcon: PropTypes.element,
+  disabled: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -62,6 +64,7 @@ Button.defaultProps = {
   variant: 'filled',
   color: 'primary',
   leftIcon: null,
+  disabled: false,
 }
 
 export default Button
