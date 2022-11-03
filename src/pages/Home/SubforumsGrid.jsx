@@ -6,9 +6,9 @@ import { FastAverageColor } from 'fast-average-color'
 import { BiUserCheck, BiSearch, BiSortDown, BiChevronDown } from 'react-icons/bi'
 import Color from 'color'
 import { useAuth } from '../../hooks/useAuth'
-import Button from '../Button'
-import Divider from '../Divider'
-import Input from '../Input'
+import Button from '../../components/Button'
+import Divider from '../../components/Divider'
+import Input from '../../components/Input'
 
 function SubforumsGrid() {
   const [course, setCourse] = useState({})

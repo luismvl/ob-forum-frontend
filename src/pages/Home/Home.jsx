@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import styled from 'styled-components/macro'
 import { Outlet, useLocation, Navigate } from 'react-router-dom'
 import Sidenav from './Sidenav'
+import { getAllCourses } from '../../api/course-api'
 import { useAuth } from '../../hooks/useAuth'
 
 function Home() {
@@ -11,18 +11,10 @@ function Home() {
   const location = useLocation()
   const { auth } = useAuth()
 
-  // Get all courses
   useEffect(() => {
-    // TODO: Refactorizar a su propio archivo en /api
-    axios
-      .get('https://ob-forum-backend.herokuapp.com/courses', {
-        headers: {
-          Authorization: `Bearer ${auth.token}`,
-        },
-      })
-      .then((res) => {
-        setCourses(res.data)
-      })
+    getAllCourses(auth.token).then((res) => {
+      setCourses(res.data)
+    })
   }, [])
 
   const inMainPath = location.pathname === '/foros' || location.pathname === '/foros/'
