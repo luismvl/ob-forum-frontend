@@ -1,42 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import axios from 'axios'
-
 import { FcHome } from 'react-icons/fc'
 import { BiChevronDown } from 'react-icons/bi'
-import Divider from '../Divider'
+import Divider from '../../components/Divider'
 import SidenavItem from './SidenavItem'
 
-function Sidenav() {
+function Sidenav({ courses }) {
   const [isOpen, setIsOpen] = useState(true)
-  const [courses, setCourses] = useState([])
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
 
-  useEffect(() => {
-    axios
-      .get('https://ob-forum-backend.herokuapp.com/courses', {
-        headers: {
-          Authorization: `Bearer Mw.PtJLsJpSOnIk3KajtK1pT9X1RyFJl2wJ1Ht79J-Bi3dV2vD15QF3qZ_S47-6`,
-        },
-      })
-      .then((res) => {
-        setCourses(res.data)
-      })
-  }, [])
-
   return (
     <Wrapper>
       <SidenavItem label="Página principal" icon={<FcHome />} />
+
       <Divider />
+
       <SidenavMenuTitle onClick={toggleMenu}>
         Cursos <MenuIcon $isOpen={isOpen} />
       </SidenavMenuTitle>
+
       <SidenavMenu $isOpen={isOpen}>
         {courses.map((course) => (
-          <SidenavItem key={course.id} label={course.name} icon={course.iconUrl} />
+          <SidenavItem
+            key={course.id}
+            label={course.name}
+            icon={course.iconUrl}
+            to={`${course.id}`}
+          />
         ))}
       </SidenavMenu>
     </Wrapper>
@@ -47,7 +41,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 275px;
+  flex-basis: 275px;
 `
 const SidenavMenu = styled.nav`
   display: flex;
@@ -84,5 +78,18 @@ const MenuIcon = styled(BiChevronDown)`
   height: 100%;
   color: ${({ theme }) => theme.greys.grey4};
 `
+
+Sidenav.propTypes = {
+  courses: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      iconUrl: PropTypes.string,
+      createdAt: PropTypes.string,
+      updatedAt: PropTypes.string,
+    })
+  ).isRequired,
+}
 
 export default Sidenav
