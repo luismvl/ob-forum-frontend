@@ -8,6 +8,7 @@ import Navbar from '../Navbar'
 import Login from '../../pages/Login'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import Home from '../../pages/Home'
+import SubforumsGrid from '../SubforumsGrid'
 
 function App() {
   const [selectedTheme, setSelectedTheme] = useState(light)
@@ -23,12 +24,14 @@ function App() {
       <AppWrapper>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Navigate to="foros" />} />
+          <Route path="login" element={<Login />} />
 
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
-            <Route path="/home" element={<Home />} />
+            <Route path="foros" element={<Home />}>
+              <Route path=":courseId" element={<SubforumsGrid />} />
+            </Route>
           </Route>
 
           {/* Not Found Route */}
