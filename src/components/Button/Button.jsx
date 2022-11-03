@@ -1,12 +1,19 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import {
+  getBackgroundColor,
+  getBorderStyle,
+  getHoverBackgroundColor,
+  getTextColor,
+} from './Button.helpers'
 
-function Button({ type, variant, color, children, leftIcon, disabled }) {
+function Button({ type, variant, color, label, leftIcon, rightIcon, disabled, span }) {
   return (
-    <Wrapper type={type} variant={variant} color={color} disabled={disabled}>
+    <Wrapper type={type} variant={variant} color={color} disabled={disabled} $span={span}>
       {leftIcon}
-      {children}
+      <span>{label}</span>
+      {rightIcon}
     </Wrapper>
   )
 }
@@ -17,46 +24,46 @@ export const Wrapper = styled.button`
   align-items: center;
   gap: 8px;
   height: 42px;
-  width: 100%;
-  border: none;
+  padding: 8px;
+  width: ${({ $span }) => ($span ? '100%' : 'auto')};
+  border: ${({ color, variant }) => getBorderStyle(color, variant)};
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.primary.main}; // Default color
-  background-color: ${({ theme, color }) => color === 'secondary' && theme.greys.black};
-  background-color: ${({ theme, color }) => color === 'white' && theme.greys.white};
-  background-color: ${({ theme, color }) => color === 'grey' && theme.greys.grey3};
-  color: ${({ theme }) => theme.textColorContrast};
-  color: ${({ theme, color }) => color === 'white' && theme.textColor};
-  color: ${({ theme, color }) => color === 'grey' && theme.textColor};
+  background-color: ${({ color, variant }) => getBackgroundColor(color, variant)};
+  color: ${({ color, variant }) => getTextColor(color, variant)};
   font-family: 'Inter', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
 
-  border: none;
-  border: ${({ theme, variant }) => variant === 'outlined' && `1px solid ${theme.greys.grey4}`};
-  border: ${({ theme, variant, color }) =>
-    variant === 'outlined' && color === 'primary' && `1px solid ${theme.greys.grey4}`};
-
   &:hover {
-    background-color: ${({ theme }) => theme.primary.dark};
-    background-color: ${({ theme, color }) => color === 'secondary' && theme.secondary.black};
-    background-color: ${({ theme, color }) => color === 'white' && theme.greys.grey2};
-    background-color: ${({ theme, color }) => color === 'grey' && theme.greys.grey4};
+    background-color: ${({ color, variant }) => getHoverBackgroundColor(color, variant)};
   }
 
   &:disabled {
     background-color: ${({ theme }) => theme.greys.grey4};
     cursor: wait;
   }
+
+  & svg {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+  }
+
+  & span {
+    white-space: nowrap;
+  }
 `
 
 Button.propTypes = {
   type: PropTypes.string,
-  variant: PropTypes.oneOf(['filled', 'outlined', 'shaded', 'colorShaded']),
+  variant: PropTypes.oneOf(['filled', 'outlined', 'shaded', 'colorShaded']), // define el estilo del botón (ej: tiene bordes o no)
   color: PropTypes.oneOf(['primary', 'secondary', 'white', 'grey']),
-  children: PropTypes.node.isRequired,
+  label: PropTypes.string,
   leftIcon: PropTypes.element,
+  rightIcon: PropTypes.element,
   disabled: PropTypes.bool,
+  span: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -64,7 +71,10 @@ Button.defaultProps = {
   variant: 'filled',
   color: 'primary',
   leftIcon: null,
+  rightIcon: null,
   disabled: false,
+  label: '',
+  span: false,
 }
 
 export default Button
