@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
-function Input({ placeholder, leftIcon, rightIcon, type, onChange, value, id }) {
+function Input({ placeholder, outlined, leftIcon, rightIcon, type, onChange, value, id }) {
   return (
-    <Wrapper>
+    <Wrapper outlined={outlined}>
       {leftIcon}
       <input type={type} placeholder={placeholder} onChange={onChange} value={value} id={id} />
       {rightIcon}
@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
   padding: 0 16px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.greys.grey2};
-  /* border: 1px solid ${({ theme }) => theme.colors.grey3}; */
+  border: ${({ outlined, theme }) => (outlined ? `1px solid ${theme.greys.grey3}` : 'none')};
 
   & input {
     width: 100%;
@@ -45,11 +45,14 @@ export const Wrapper = styled.div`
   & svg {
     color: ${({ theme }) => theme.greys.grey4};
     flex-shrink: 0;
+    width: 24px;
+    height: 24px;
   }
 `
 
 Input.propTypes = {
   placeholder: PropTypes.string,
+  outlined: PropTypes.bool,
   leftIcon: PropTypes.element,
   rightIcon: PropTypes.element,
   type: PropTypes.string,
@@ -60,6 +63,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   placeholder: '',
+  outlined: false,
   leftIcon: null,
   rightIcon: null,
   type: 'text',
