@@ -74,12 +74,14 @@ function Login() {
         </RememberMeForgotPassword>
 
         <ButtonsContainer>
-          <Button type="submit" disabled={isLogging}>
-            Iniciar sesión
-          </Button>
-          <Button type="button" onClick={() => navigate('/register')} color="secondary">
-            Registrarse
-          </Button>
+          <Button type="submit" disabled={isLogging} span label="Iniciar sesión" />
+          <Button
+            type="button"
+            onClick={() => navigate('/register')}
+            color="secondary"
+            span
+            label="Registrarse"
+          />
         </ButtonsContainer>
       </Form>
     </Container>

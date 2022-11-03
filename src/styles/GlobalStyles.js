@@ -22,17 +22,10 @@ const GlobalStyles = createGlobalStyle`
   h4,
   h5,
   h6,
-  p,
-  ol,
-  ul {
+  p {
     margin: 0;
     padding: 0;
     font-weight: normal;
-  }
-
-  ol,
-  ul {
-    list-style: none;
   }
 
   img {
